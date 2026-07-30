@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kennys44.github.io/MyScreen/sitemap.xml
