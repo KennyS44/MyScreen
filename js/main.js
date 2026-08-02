@@ -12,7 +12,7 @@ const PROJECTS = [
     statusText: 'Работает',
     year: '2026',
     kind: 'Инструмент',
-    tags: ['HTML/CSS/JS', 'IndexedDB', 'Бесконечный холст'],
+    tags: ['HTML/CSS/JS', 'IndexedDB', 'localStorage'],
     summary:
       'Хранилище материалов для мастера настольных ролевых игр: ' +
       'пространства-холсты, карточки объектов, связи между ними, текстовый ' +
@@ -48,7 +48,7 @@ const PROJECTS = [
     statusText: 'Работает',
     year: '2026',
     kind: 'Инструмент',
-    tags: ['Electron', 'Node.js', 'Офлайн'],
+    tags: ['Electron', 'Node.js', 'electron-builder'],
     summary:
       'Настольная версия Journeyman: ярлык и отдельное окно вместо браузера. ' +
       'Данные хранятся папкой на диске, а интернет не нужен вовсе.',
@@ -70,14 +70,14 @@ const PROJECTS = [
     ],
   },
   {
-    id: 'svetlo',
-    title: 'Светло',
+    id: 'brightside',
+    title: 'Brightside',
     tagline: 'Лендинг услуги с расчётом стоимости',
     status: 'live',
     statusText: 'Работает',
     year: '2026',
     kind: 'Сайт',
-    tags: ['HTML/CSS/JS', 'Калькулятор', 'Формы'],
+    tags: ['HTML/CSS/JS', 'Schema.org'],
     summary:
       'Одностраничный сайт клининговой службы: калькулятор стоимости, ' +
       'заявка с проверкой полей, разделы услуг, отзывов и вопросов. ' +
@@ -96,22 +96,22 @@ const PROJECTS = [
       'Микроразметка вопросов-ответов и превью для соцсетей.',
     ],
     stack: 'Чистые HTML, CSS и JavaScript. Шрифт локальный, сборки и сервера нет.',
-    repo: GITHUB + '/Svetlo',
-    demo: 'https://kennys44.github.io/Svetlo/',
+    repo: GITHUB + '/Brightside',
+    demo: 'https://kennys44.github.io/Brightside/',
     shots: [
-      { src: 'img/svetlo-hero.jpg', w: 1920, h: 1200, alt: 'Первый экран лендинга: заголовок, кнопки действия и краткие условия работы' },
-      { src: 'img/svetlo-calc.jpg', w: 1920, h: 1200, alt: 'Калькулятор: параметры слева, построчный расчёт и итоговая сумма в закреплённой панели справа' },
+      { src: 'img/brightside-hero.jpg', w: 1920, h: 1200, alt: 'Первый экран лендинга: заголовок, кнопки действия и краткие условия работы' },
+      { src: 'img/brightside-calc.jpg', w: 1920, h: 1200, alt: 'Калькулятор: параметры слева, построчный расчёт и итоговая сумма в закреплённой панели справа' },
     ],
   },
   {
-    id: 'obzharka',
-    title: 'Обжарка',
+    id: 'roastery',
+    title: 'Roastery',
     tagline: 'Каталог товаров с подбором и корзиной',
     status: 'live',
     statusText: 'Работает',
     year: '2026',
     kind: 'Сайт',
-    tags: ['HTML/CSS/JS', 'localStorage', 'Корзина'],
+    tags: ['HTML/CSS/JS', 'localStorage', 'History API'],
     summary:
       'Витрина магазина кофе: подбор по обжарке, стране, способу и цене, ' +
       'поиск, сортировка и корзина. Подборка сохраняется в адресе страницы.',
@@ -129,11 +129,11 @@ const PROJECTS = [
       'Обложки товаров рисуются кодом: SVG вместо фотографий.',
     ],
     stack: 'Чистые HTML, CSS и JavaScript. Корзина — в localStorage, подбор — в параметрах адреса.',
-    repo: GITHUB + '/Obzharka',
-    demo: 'https://kennys44.github.io/Obzharka/',
+    repo: GITHUB + '/Roastery',
+    demo: 'https://kennys44.github.io/Roastery/',
     shots: [
-      { src: 'img/obzharka-grid.jpg', w: 1920, h: 1200, alt: 'Каталог: панель подбора слева, карточки товаров сеткой' },
-      { src: 'img/obzharka-cart.jpg', w: 1920, h: 1200, alt: 'Корзина выезжает поверх каталога: состав заказа, количество и сумма' },
+      { src: 'img/roastery-grid.jpg', w: 1920, h: 1200, alt: 'Каталог: панель подбора слева, карточки товаров сеткой' },
+      { src: 'img/roastery-cart.jpg', w: 1920, h: 1200, alt: 'Корзина выезжает поверх каталога: состав заказа, количество и сумма' },
     ],
   },
 ];
