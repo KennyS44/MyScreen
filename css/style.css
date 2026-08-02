@@ -374,6 +374,18 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .modal-body li { margin-bottom: 8px; }
 .modal-shots { display: flex; flex-direction: column; gap: 16px; margin: 16px 0 24px; }
 .modal-shots figure { margin: 0; }
+.shot-zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: var(--r);
+  transition: transform .2s var(--ease);
+}
+.shot-zoom:hover { transform: translateY(-2px); }
+.shot-zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .modal-shots img {
   display: block;
   width: 100%;
@@ -382,6 +394,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   border-radius: var(--r);
   background: var(--surface-2);
 }
+.shot-zoom:hover img { border-color: var(--line-hot); }
 .modal-shots figcaption {
   margin-top: 8px;
   color: var(--muted);
@@ -390,6 +403,67 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 }
 
 .modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+/* ---------- Изображение крупным планом ---------- */
+.lightbox { position: fixed; inset: 0; z-index: 60; display: flex; }
+.lightbox[hidden] { display: none; }
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 7, 11, .92);
+  backdrop-filter: blur(6px);
+  animation: fade .2s var(--ease);
+  cursor: zoom-out;
+}
+
+.lightbox-panel {
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: calc(100% - 32px);
+  animation: rise .24s var(--ease);
+}
+
+.lightbox-stage { display: flex; max-width: 100%; }
+
+.lightbox-stage img {
+  display: block;
+  max-width: 100%;
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  border: 1px solid var(--line-hot);
+  border-radius: var(--r);
+  cursor: zoom-out;
+}
+
+.lightbox-caption {
+  margin: 0;
+  max-width: 66ch;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -56px;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.lightbox-close:hover { color: var(--text); border-color: var(--accent); }
 
 @keyframes fade { from { opacity: 0; } }
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } }
@@ -407,6 +481,10 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   .stats { gap: 24px; }
   .modal-panel { padding: 24px; }
   .modal-body h2 { font-size: 24px; }
+  /* Узкий экран: снимок показывается во всю высоту и прокручивается вбок —
+     иначе широкий кадр ужимается до нечитаемого и «рассмотреть» не выходит */
+  .lightbox-stage { overflow-x: auto; overscroll-behavior-x: contain; }
+  .lightbox-stage img { max-width: none; max-height: none; height: 62vh; width: auto; }
   .footer { padding: 24px 16px; }
 }
 

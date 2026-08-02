@@ -34,7 +34,7 @@ const PROJECTS = [
     repo: GITHUB + '/Journeyman',
     demo: 'https://kennys44.github.io/Journeyman/',
     shots: [
-      { src: 'img/journeyman-canvas.jpg', w: 1920, h: 1200, alt: 'Холст пространства: четыре объекта, связанные нитями' },
+      { src: 'img/journeyman-canvas.jpg', w: 1920, h: 1200, alt: 'Пространство — бесконечный холст, на который помещается сколько угодно объектов, связанных нитями' },
       { src: 'img/journeyman-object.jpg', w: 1920, h: 810, alt: 'Внутренняя директория объекта: текстовый редактор и боковые панели' },
     ],
   },
@@ -149,8 +149,10 @@ function openProject(id) {
   const shots = p.shots
     ? `<div class="modal-shots">${p.shots.map((s) => `
         <figure>
-          <img src="${s.src}" width="${s.w}" height="${s.h}" alt="${s.alt}"
-               loading="lazy" decoding="async">
+          <button class="shot-zoom" type="button" aria-label="Рассмотреть подробнее: ${s.alt}">
+            <img src="${s.src}" width="${s.w}" height="${s.h}" alt="${s.alt}"
+                 loading="lazy" decoding="async">
+          </button>
           <figcaption>${s.alt}</figcaption>
         </figure>`).join('')}</div>`
     : '';
@@ -187,6 +189,30 @@ function closeProject() {
   if (lastFocused) lastFocused.focus();
 }
 
+/* ---------- Изображение крупным планом ---------- */
+
+const lightbox = document.getElementById('lightbox');
+const lightboxPanel = lightbox.querySelector('.lightbox-panel');
+const lightboxImg = lightbox.querySelector('img');
+const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+
+let lastZoomed = null;
+
+function openShot(img) {
+  lightboxImg.src = img.currentSrc || img.src;
+  lightboxImg.alt = img.alt;
+  lightboxCaption.textContent = img.alt;
+  lastZoomed = document.activeElement;
+  lightbox.hidden = false;
+  lightboxPanel.focus();
+}
+
+function closeShot() {
+  lightbox.hidden = true;
+  lightboxImg.removeAttribute('src');
+  if (lastZoomed) lastZoomed.focus();
+}
+
 /* ---------- События ---------- */
 
 cardsEl.addEventListener('click', (e) => {
@@ -203,11 +229,19 @@ filtersEl.addEventListener('click', (e) => {
 });
 
 modal.addEventListener('click', (e) => {
+  const zoom = e.target.closest('.shot-zoom');
+  if (zoom) return openShot(zoom.querySelector('img'));
   if (e.target.closest('[data-close]')) closeProject();
 });
 
+lightbox.addEventListener('click', (e) => {
+  if (e.target.closest('[data-lb-close]') || e.target === lightboxImg) closeShot();
+});
+
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !modal.hidden) closeProject();
+  if (e.key !== 'Escape') return;
+  if (!lightbox.hidden) return closeShot();   // сначала закрывается верхний слой
+  if (!modal.hidden) closeProject();
 });
 
 /* ---------- Старт ---------- */
