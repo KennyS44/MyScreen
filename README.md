@@ -14,6 +14,8 @@
     img/og.png                превью 1200×630 для соцсетей и мессенджеров
     img/favicon.svg           иконка вкладки
     img/apple-touch-icon.png  иконка для экрана «Домой» на iOS
+    img/journeyman-*.jpg      снимки Journeyman: холст пространства и объект
+    img/journeyman-desktop.png снимок настольной версии
     tools/og-template.html    шаблон, из которого снимается og.png
     robots.txt                разрешение обхода + указатель на карту сайта
     sitemap.xml               карта сайта для Google и Яндекса

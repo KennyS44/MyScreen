@@ -32,6 +32,11 @@ const PROJECTS = [
     ],
     stack: 'Чистые HTML, CSS и JavaScript. IndexedDB — для записей и файлов, localStorage — для положения камеры.',
     repo: GITHUB + '/Journeyman',
+    demo: 'https://kennys44.github.io/Journeyman/',
+    shots: [
+      { src: 'img/journeyman-canvas.jpg', w: 1920, h: 1200, alt: 'Холст пространства: четыре объекта, связанные нитями' },
+      { src: 'img/journeyman-object.jpg', w: 1920, h: 810, alt: 'Внутренняя директория объекта: текстовый редактор и боковые панели' },
+    ],
   },
   {
     id: 'journeyman-desktop',
@@ -58,6 +63,9 @@ const PROJECTS = [
     ],
     stack: 'Electron и Node.js. Сборки для Windows и Linux готовятся автоматически.',
     repo: GITHUB + '/Journeyman-Desktop',
+    shots: [
+      { src: 'img/journeyman-desktop.png', w: 1280, h: 793, alt: 'Окно программы: заметки объекта и калькулятор с броском 2d6+3' },
+    ],
   },
   {
     id: 'next',
@@ -93,9 +101,15 @@ let lastFocused = null;
 
 function cardMarkup(p, index) {
   const num = String(index + 1).padStart(2, '0');
+  const shot = p.shots && p.shots[0];
+  const cover = shot
+    ? `<span class="card-shot"><img src="${shot.src}" width="${shot.w}" height="${shot.h}"
+         alt="${shot.alt}" loading="lazy" decoding="async"></span>`
+    : '<span class="card-shot card-shot-empty" aria-hidden="true">//</span>';
   return `
     <li>
       <button class="card" type="button" data-id="${p.id}">
+        ${cover}
         <span class="card-top">
           <span class="card-id">${num} · ${p.kind}</span>
           <span class="status ${p.status}">${p.statusText}</span>
@@ -132,17 +146,32 @@ function openProject(id) {
     ? `<h4>Что внутри</h4><ul>${p.features.map((f) => `<li>${f}</li>`).join('')}</ul>`
     : '';
 
+  const shots = p.shots
+    ? `<div class="modal-shots">${p.shots.map((s) => `
+        <figure>
+          <img src="${s.src}" width="${s.w}" height="${s.h}" alt="${s.alt}"
+               loading="lazy" decoding="async">
+          <figcaption>${s.alt}</figcaption>
+        </figure>`).join('')}</div>`
+    : '';
+
+  const demo = p.demo
+    ? `<a class="btn btn-solid" href="${p.demo}" target="_blank" rel="noopener">Открыть демо</a>`
+    : '';
+
   modalBody.innerHTML = `
     <p class="eyebrow">${p.kind} · ${p.year}</p>
     <h2 id="modal-title">${p.title}</h2>
     <p class="modal-sub">${p.tagline}</p>
     <h4>О проекте</h4>
     <p>${p.about}</p>
+    ${shots}
     ${features}
     <h4>Стек</h4>
     <p>${p.stack}</p>
     <div class="modal-actions">
-      <a class="btn btn-solid" href="${p.repo}" target="_blank" rel="noopener">Открыть на GitHub</a>
+      ${demo}
+      <a class="btn ${p.demo ? 'btn-ghost' : 'btn-solid'}" href="${p.repo}" target="_blank" rel="noopener">Открыть на GitHub</a>
       <button class="btn btn-ghost" type="button" data-close>Закрыть</button>
     </div>`;
 
