@@ -180,7 +180,8 @@ function openProject(id) {
   lastFocused = document.activeElement;
   modal.hidden = false;
   document.body.style.overflow = 'hidden';
-  modalPanel.focus();
+  modalPanel.scrollTop = 0;              // иначе следующий проект откроется там же, где бросили прошлый
+  modalPanel.focus({ preventScroll: true });
 }
 
 function closeProject() {
@@ -193,6 +194,7 @@ function closeProject() {
 
 const lightbox = document.getElementById('lightbox');
 const lightboxPanel = lightbox.querySelector('.lightbox-panel');
+const lightboxStage = lightbox.querySelector('.lightbox-stage');
 const lightboxImg = lightbox.querySelector('img');
 const lightboxCaption = lightbox.querySelector('.lightbox-caption');
 
@@ -204,7 +206,8 @@ function openShot(img) {
   lightboxCaption.textContent = img.alt;
   lastZoomed = document.activeElement;
   lightbox.hidden = false;
-  lightboxPanel.focus();
+  lightboxStage.scrollLeft = 0;          // новый снимок показываем с левого края
+  lightboxPanel.focus({ preventScroll: true });
 }
 
 function closeShot() {
