@@ -277,6 +277,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 /* ---------- Обо мне ---------- */
 .about { max-width: 66ch; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
 .about p { margin: 0; color: var(--muted); }
+.about-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* ---------- Подвал ---------- */
 .footer {
@@ -290,6 +291,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   font-size: 14px;
   border-top: 1px solid var(--line);
 }
+.footer-links { display: flex; gap: 16px; }
 
 /* ---------- Знакомство с проектом ---------- */
 .modal { position: fixed; inset: 0; z-index: 50; display: flex; }
