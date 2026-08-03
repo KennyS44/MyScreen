@@ -1,12 +1,4 @@
-# Как GitHub считает язык репозитория.
-# По умолчанию он меряет байты, и файлы оформления перевешивают логику —
-# витрина числилась как CSS. Ниже — что из подсчёта исключить.
-
-# Шрифты скачаны из Google Fonts, это не наш код.
 fonts/** linguist-vendored
-# css/fonts.css собран скриптом по данным Google Fonts.
 css/fonts.css linguist-generated=true
-# Оформление не считаем языком проекта: в списке остаются JavaScript и HTML.
 *.css linguist-detectable=false
-# tools/ — вспомогательный шаблон, а не сам сайт.
 tools/** linguist-detectable=false
