@@ -88,6 +88,37 @@ h1, h2, h3 { font-family: var(--f-head); font-weight: 600; line-height: 1.2; mar
 }
 .nav > a:not(.btn):hover { color: var(--text); background: var(--surface-2); }
 
+/* ---------- Переключатель языка ---------- */
+.lang {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.lang button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--f-head);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: color .2s var(--ease), background .2s var(--ease);
+}
+
+.lang button:hover { color: var(--text); background: var(--surface-2); }
+
+.lang button[aria-pressed="true"] {
+  color: #04222a;
+  background: var(--accent);
+}
+
 /* ---------- Кнопки ---------- */
 .btn {
   display: inline-flex;
