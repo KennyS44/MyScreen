@@ -1,5 +1,5 @@
-/* Данные проектов и вся логика витрины. Чтобы добавить проект —
-   допишите объект в массив PROJECTS ниже, остальное соберётся само. */
+/* Project data and all showcase logic. To add a project, append an object
+   to the PROJECTS array below — everything else assembles itself. */
 
 const GITHUB = 'https://github.com/KennyS44';
 
@@ -7,140 +7,144 @@ const PROJECTS = [
   {
     id: 'journeyman',
     title: 'Journeyman',
-    tagline: 'Кодекс мастера настольных ролевых игр',
+    tagline: 'A codex for tabletop roleplaying game masters',
     status: 'live',
-    statusText: 'Работает',
+    statusText: 'Live',
     year: '2026',
-    kind: 'Инструмент',
+    kind: 'Tool',
     tags: ['HTML/CSS/JS', 'IndexedDB', 'localStorage'],
     summary:
-      'Хранилище материалов для мастера настольных ролевых игр: ' +
-      'пространства-холсты, карточки объектов, связи между ними, текстовый ' +
-      'редактор, кубики и музыка. Всё работает в браузере, без сервера.',
+      'A store for a tabletop game master\'s material: canvas spaces, object ' +
+      'cards, links between them, a text editor, dice and music. It all runs ' +
+      'in the browser, with no server.',
     about:
-      'Мастеру игры приходится держать в голове города, подземелья и связи ' +
-      'между персонажами. Journeyman переносит это на свободный холст: ' +
-      'объекты перемещаются мышью или пальцем, между ними протягиваются нити, ' +
-      'а у каждого объекта есть собственная директория с текстом, ' +
-      'изображениями, музыкой и пометками. Чтобы всё это можно было увидеть ' +
-      'сразу, при первом запуске приложение само раскладывает демо-сцену.',
+      'A game master has to keep towns, dungeons and the ties between ' +
+      'characters in his head. Journeyman moves all of that onto an open ' +
+      'canvas: objects are dragged with a mouse or a finger, threads are ' +
+      'pulled between them, and every object has its own directory with text, ' +
+      'images, music and notes. So that all of this is visible right away, ' +
+      'the app lays out a demo scene on first launch.',
     features: [
-      'Пространства-холсты с масштабом, панорамой и режимом «Показать всё».',
-      'Инструмент «Связь»: нить между двумя объектами в два нажатия.',
-      'Редактор текста с таблицами и изображениями, размер которых меняется перетаскиванием за угол.',
-      'Кубики от d4 до d100 с анимацией броска и калькулятор с историей вычислений.',
-      'Заметки к плану игры в боковой вкладке — отдельные для каждого пространства.',
-      'Резервная копия: весь кодекс сохраняется в один файл и загружается обратно.',
+      'Canvas spaces with zoom, panning and a "Show all" mode.',
+      'A "Link" tool: a thread between two objects in two clicks.',
+      'A text editor with tables and images that are resized by dragging a corner.',
+      'Dice from d4 to d100 with a roll animation, and a calculator with a history of results.',
+      'Session notes in a side tab, kept separately for each space.',
+      'Backup: the whole codex is saved into a single file and loaded back from it.',
     ],
-    stack: 'Чистые HTML, CSS и JavaScript. IndexedDB — для записей и файлов, localStorage — для положения камеры.',
+    stack: 'Plain HTML, CSS and JavaScript. IndexedDB for records and files, localStorage for the camera position.',
     repo: GITHUB + '/Journeyman',
     demo: 'https://kennys44.github.io/Journeyman/',
     shots: [
-      { src: 'img/journeyman-canvas.jpg', w: 1920, h: 1200, alt: 'Пространство — бесконечный холст, на который помещается сколько угодно объектов, связанных нитями' },
-      { src: 'img/journeyman-object.jpg', w: 1920, h: 810, alt: 'У каждого объекта своя директория: текст с таблицами и картинками, а рядом — панели с файлами, музыкой и пометками' },
+      { src: 'img/journeyman-canvas.jpg', w: 1920, h: 1200, alt: 'A space is an endless canvas that fits any number of objects linked by threads' },
+      { src: 'img/journeyman-object.jpg', w: 1920, h: 810, alt: 'Every object has its own directory: text with tables and images, and panels with files, music and notes next to it' },
     ],
   },
   {
     id: 'journeyman-desktop',
     title: 'Journeyman Desktop',
-    tagline: 'Тот же кодекс мастера — в виде настольного приложения',
+    tagline: 'The same master\'s codex, as a desktop application',
     status: 'live',
-    statusText: 'Работает',
+    statusText: 'Live',
     year: '2026',
-    kind: 'Инструмент',
+    kind: 'Tool',
     tags: ['Electron', 'Node.js', 'electron-builder'],
     summary:
-      'Настольная версия Journeyman: ярлык и отдельное окно вместо браузера. ' +
-      'Данные хранятся папкой на диске, а интернет не нужен вовсе.',
+      'The desktop build of Journeyman: a shortcut and its own window instead ' +
+      'of a browser. Data is stored as a folder on disk, and no internet ' +
+      'connection is needed at all.',
     about:
-      'Всё, что умеет веб-версия, перенесено в обычное приложение. Отличие — ' +
-      'в хранении: записи и файлы лежат на диске одной папкой, которую можно ' +
-      'скопировать на флешку. Это и есть резервная копия.',
+      'Everything the web version can do has been moved into a regular ' +
+      'application. The difference is storage: records and files sit on disk ' +
+      'as a single folder that can be copied onto a flash drive. That folder ' +
+      'is the backup.',
     features: [
-      'Данные хранятся обычными файлами: db.json и папка assets рядом с ним.',
-      'Полная работа офлайн: шрифты встроены, из сети не загружается ничего.',
-      'Окно запоминает размер и положение, а вторая копия приложения не запустится.',
-      'Меню с горячими клавишами: правка текста, масштаб, полный экран, сохранение и загрузка кодекса.',
-      'Готовая сборка под Windows — установщик или переносимая версия без установки.',
+      'Data is kept in ordinary files: db.json and an assets folder beside it.',
+      'Fully offline: fonts are bundled, nothing is fetched from the network.',
+      'The window remembers its size and position, and a second instance will not start.',
+      'A menu with keyboard shortcuts: text editing, zoom, full screen, saving and loading the codex.',
+      'A ready Windows build — an installer or a portable version that needs no installation.',
     ],
-    stack: 'Electron и Node.js. Вместо браузерной базы — обычные файлы на диске; сборки под Windows и Linux собираются автоматически.',
+    stack: 'Electron and Node.js. Ordinary files on disk instead of a browser database; Windows and Linux builds are produced automatically.',
     repo: GITHUB + '/Journeyman-Desktop',
     shots: [
-      { src: 'img/journeyman-desktop.png', w: 1280, h: 793, alt: 'Отдельное окно программы с тем же интерфейсом, что и в браузере: браузер и интернет не нужны' },
+      { src: 'img/journeyman-desktop.png', w: 1280, h: 793, alt: 'A standalone application window with the same interface as in the browser: no browser and no internet needed' },
     ],
   },
   {
     id: 'brightside',
     title: 'Brightside',
-    tagline: 'Лендинг услуги с расчётом стоимости',
+    tagline: 'A service landing page with a price calculator',
     status: 'live',
-    statusText: 'Работает',
+    statusText: 'Live',
     year: '2026',
-    kind: 'Сайт',
+    kind: 'Site',
     tags: ['HTML/CSS/JS', 'Schema.org'],
     summary:
-      'Одностраничный сайт клининговой службы: калькулятор стоимости, ' +
-      'заявка с проверкой полей, разделы услуг, отзывов и вопросов. ' +
-      'Светлая деловая тема.',
+      'A one-page site for a cleaning service: a price calculator, a request ' +
+      'form with field validation, and sections for services, reviews and ' +
+      'questions. A light business theme.',
     about:
-      'Типовой коммерческий лендинг целиком — от первого экрана до заявки. ' +
-      'Главное здесь калькулятор: человек отмечает тип уборки, площадь и ' +
-      'дополнительные услуги и сразу видит цену построчно, без звонка и ' +
-      'выезда оценщика. Итог расчёта прикладывается к заявке. Компания ' +
-      'вымышленная — проект собран как образец работы.',
+      'A complete, typical commercial landing page — from the first screen to ' +
+      'the request form. The calculator is the centrepiece: the visitor picks ' +
+      'the type of cleaning, the area and any extras, and immediately sees the ' +
+      'price line by line, without a phone call or an on-site estimate. The ' +
+      'result is attached to the request. The company is fictional — the ' +
+      'project was built as a work sample.',
     features: [
-      'Калькулятор с пятью параметрами: сумма пересчитывается на каждое изменение.',
-      'Поле площади и ползунок ведут одно значение, ввод за границами зажимается.',
-      'Проверка заявки: имя, формат телефона, дата не в прошлом — с подсказками у полей.',
-      'Заявка собирается в готовый текст вместе с расчётом.',
-      'Микроразметка вопросов-ответов и превью для соцсетей.',
+      'A calculator with five parameters: the total is recomputed on every change.',
+      'The area field and the slider drive one value, and out-of-range input is clamped.',
+      'Request validation: name, phone format, no dates in the past — with hints next to the fields.',
+      'The request is assembled into ready-to-send text together with the calculation.',
+      'FAQ structured data and a social preview.',
     ],
-    stack: 'Чистые HTML, CSS и JavaScript. Шрифт локальный, сборки и сервера нет.',
+    stack: 'Plain HTML, CSS and JavaScript. The font is local, and there is no build step and no server.',
     repo: GITHUB + '/Brightside',
     demo: 'https://kennys44.github.io/Brightside/',
     shots: [
-      { src: 'img/brightside-hero.jpg', w: 1920, h: 1200, alt: 'Первый экран лендинга: заголовок, кнопки действия и краткие условия работы' },
-      { src: 'img/brightside-calc.jpg', w: 1920, h: 1200, alt: 'Калькулятор: параметры слева, построчный расчёт и итоговая сумма в закреплённой панели справа' },
+      { src: 'img/brightside-hero.jpg', w: 1920, h: 1200, alt: 'The first screen of the landing page: headline, action buttons and the key terms of service' },
+      { src: 'img/brightside-calc.jpg', w: 1920, h: 1200, alt: 'The calculator: parameters on the left, a line-by-line breakdown and the total in a sticky panel on the right' },
     ],
   },
   {
     id: 'roastery',
     title: 'Roastery',
-    tagline: 'Каталог товаров с подбором и корзиной',
+    tagline: 'A product catalogue with filtering and a cart',
     status: 'live',
-    statusText: 'Работает',
+    statusText: 'Live',
     year: '2026',
-    kind: 'Сайт',
+    kind: 'Site',
     tags: ['HTML/CSS/JS', 'localStorage', 'History API'],
     summary:
-      'Витрина магазина кофе: подбор по обжарке, стране, способу и цене, ' +
-      'поиск, сортировка и корзина. Подборка сохраняется в адресе страницы.',
+      'A coffee shop storefront: filtering by roast, country, brewing method ' +
+      'and price, plus search, sorting and a cart. The selection is kept in ' +
+      'the page URL.',
     about:
-      'Ближайший к интернет-магазину проект, который можно собрать без ' +
-      'сервера. Фильтры внутри группы складываются по «или», между группами — ' +
-      'по «и». Подбор пересчитывается на лету: пункты, под которые не осталось ' +
-      'ни одного товара, убираются из списка, поэтому выбрать заведомо пустой ' +
-      'набор условий нельзя. Состояние подбора живёт в адресе — ссылку на ' +
-      'выдачу можно переслать, а «Назад» отменяет последний фильтр. Корзина ' +
-      'лежит в браузере и переживает перезагрузку. Магазин вымышленный.',
+      'As close to an online store as you can get without a server. Filters ' +
+      'inside a group combine with OR, and groups combine with AND. The ' +
+      'selection is recomputed on the fly: options that no longer match any ' +
+      'product are removed from the list, so an obviously empty set of ' +
+      'conditions cannot be chosen. The filter state lives in the URL — a link ' +
+      'to the results can be shared, and Back undoes the last filter. The cart ' +
+      'is stored in the browser and survives a reload. The shop is fictional.',
     features: [
-      'Подбор по четырём условиям сразу: числа рядом с пунктами пересчитываются, а пункты без подходящих лотов исчезают.',
-      'Поиск по названию, стране и вкусовым нотам; четыре порядка сортировки.',
-      'Корзина с пересчётом суммы и остатками: больше, чем есть на складе, не набрать.',
-      'Состояние подбора в адресе страницы — ссылку можно переслать.',
-      'Обложки товаров рисуются кодом: SVG вместо фотографий.',
+      'Filtering by four conditions at once: the counts next to the options are recomputed, and options with no matching lots disappear.',
+      'Search by name, country and tasting notes; four sort orders.',
+      'A cart with a running total and stock limits: you cannot add more than is in stock.',
+      'The filter state sits in the page URL, so a link can be shared.',
+      'Product covers are drawn in code: SVG instead of photographs.',
     ],
-    stack: 'Чистые HTML, CSS и JavaScript. Корзина — в localStorage, подбор — в параметрах адреса.',
+    stack: 'Plain HTML, CSS and JavaScript. The cart lives in localStorage, the filters in the URL parameters.',
     repo: GITHUB + '/Roastery',
     demo: 'https://kennys44.github.io/Roastery/',
     shots: [
-      { src: 'img/roastery-grid.jpg', w: 1920, h: 1200, alt: 'Каталог с выбранным условием: список подбора слева сузился до тех пунктов, под которые ещё есть товары' },
-      { src: 'img/roastery-cart.jpg', w: 1920, h: 1200, alt: 'Корзина выезжает поверх каталога: состав заказа, количество и сумма' },
+      { src: 'img/roastery-grid.jpg', w: 1920, h: 1200, alt: 'The catalogue with a condition applied: the filter list on the left has narrowed to the options that still have products' },
+      { src: 'img/roastery-cart.jpg', w: 1920, h: 1200, alt: 'The cart slides in over the catalogue: order contents, quantities and the total' },
     ],
   },
 ];
 
-/* ---------- Карточки ---------- */
+/* ---------- Cards ---------- */
 
 const cardsEl = document.getElementById('cards');
 const filtersEl = document.querySelector('.filters');
@@ -148,7 +152,7 @@ const modal = document.getElementById('modal');
 const modalPanel = modal.querySelector('.modal-panel');
 const modalBody = modal.querySelector('.modal-body');
 
-let activeFilter = 'Все';
+let activeFilter = 'All';
 let lastFocused = null;
 
 function cardMarkup(p, index) {
@@ -169,39 +173,39 @@ function cardMarkup(p, index) {
         <h3>${p.title}</h3>
         <p>${p.summary}</p>
         <span class="tags">${p.tags.map((t) => `<span class="tag">${t}</span>`).join('')}</span>
-        <span class="card-more">Подробнее →</span>
+        <span class="card-more">Details →</span>
       </button>
     </li>`;
 }
 
 function renderCards() {
-  const list = activeFilter === 'Все'
+  const list = activeFilter === 'All'
     ? PROJECTS
     : PROJECTS.filter((p) => p.kind === activeFilter);
   cardsEl.innerHTML = list.map(cardMarkup).join('');
 }
 
 function renderFilters() {
-  const kinds = ['Все', ...new Set(PROJECTS.map((p) => p.kind))];
+  const kinds = ['All', ...new Set(PROJECTS.map((p) => p.kind))];
   filtersEl.innerHTML = kinds
     .map((k) => `<button class="chip" type="button" aria-pressed="${k === activeFilter}">${k}</button>`)
     .join('');
 }
 
-/* ---------- Знакомство с проектом ---------- */
+/* ---------- Project panel ---------- */
 
 function openProject(id) {
   const p = PROJECTS.find((item) => item.id === id);
   if (!p) return;
 
   const features = p.features.length
-    ? `<h4>Что внутри</h4><ul>${p.features.map((f) => `<li>${f}</li>`).join('')}</ul>`
+    ? `<h4>What is inside</h4><ul>${p.features.map((f) => `<li>${f}</li>`).join('')}</ul>`
     : '';
 
   const shots = p.shots
     ? `<div class="modal-shots">${p.shots.map((s) => `
         <figure>
-          <button class="shot-zoom" type="button" aria-label="Рассмотреть подробнее: ${s.alt}">
+          <button class="shot-zoom" type="button" aria-label="Take a closer look: ${s.alt}">
             <img src="${s.src}" width="${s.w}" height="${s.h}" alt="${s.alt}"
                  loading="lazy" decoding="async">
           </button>
@@ -210,29 +214,29 @@ function openProject(id) {
     : '';
 
   const demo = p.demo
-    ? `<a class="btn btn-solid" href="${p.demo}" target="_blank" rel="noopener">Открыть демо</a>`
+    ? `<a class="btn btn-solid" href="${p.demo}" target="_blank" rel="noopener">Open demo</a>`
     : '';
 
   modalBody.innerHTML = `
     <p class="eyebrow">${p.kind} · ${p.year}</p>
     <h2 id="modal-title">${p.title}</h2>
     <p class="modal-sub">${p.tagline}</p>
-    <h4>О проекте</h4>
+    <h4>About the project</h4>
     <p>${p.about}</p>
     ${shots}
     ${features}
-    <h4>Стек</h4>
+    <h4>Stack</h4>
     <p>${p.stack}</p>
     <div class="modal-actions">
       ${demo}
-      <a class="btn ${p.demo ? 'btn-ghost' : 'btn-solid'}" href="${p.repo}" target="_blank" rel="noopener">Открыть на GitHub</a>
-      <button class="btn btn-ghost" type="button" data-close>Закрыть</button>
+      <a class="btn ${p.demo ? 'btn-ghost' : 'btn-solid'}" href="${p.repo}" target="_blank" rel="noopener">View on GitHub</a>
+      <button class="btn btn-ghost" type="button" data-close>Close</button>
     </div>`;
 
   lastFocused = document.activeElement;
   modal.hidden = false;
   document.body.style.overflow = 'hidden';
-  modalPanel.scrollTop = 0;              // иначе следующий проект откроется там же, где бросили прошлый
+  modalPanel.scrollTop = 0;              // otherwise the next project opens where the previous one was left
   modalPanel.focus({ preventScroll: true });
 }
 
@@ -242,7 +246,7 @@ function closeProject() {
   if (lastFocused) lastFocused.focus();
 }
 
-/* ---------- Изображение крупным планом ---------- */
+/* ---------- Image close-up ---------- */
 
 const lightbox = document.getElementById('lightbox');
 const lightboxPanel = lightbox.querySelector('.lightbox-panel');
@@ -258,7 +262,7 @@ function openShot(img) {
   lightboxCaption.textContent = img.alt;
   lastZoomed = document.activeElement;
   lightbox.hidden = false;
-  lightboxStage.scrollLeft = 0;          // новый снимок показываем с левого края
+  lightboxStage.scrollLeft = 0;          // a new screenshot is shown from its left edge
   lightboxPanel.focus({ preventScroll: true });
 }
 
@@ -268,7 +272,7 @@ function closeShot() {
   if (lastZoomed) lastZoomed.focus();
 }
 
-/* ---------- События ---------- */
+/* ---------- Events ---------- */
 
 cardsEl.addEventListener('click', (e) => {
   const card = e.target.closest('.card');
@@ -295,11 +299,11 @@ lightbox.addEventListener('click', (e) => {
 
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
-  if (!lightbox.hidden) return closeShot();   // сначала закрывается верхний слой
+  if (!lightbox.hidden) return closeShot();   // the top layer closes first
   if (!modal.hidden) closeProject();
 });
 
-/* ---------- Старт ---------- */
+/* ---------- Start ---------- */
 
 renderFilters();
 renderCards();
