@@ -1,69 +1,74 @@
-# MyScreen — витрина проектов
+# MyScreen — project showcase
 
-Личная страница-портфолио: тёмное киберпанк-оформление в деловой подаче,
-карточки проектов и панель «знакомства» с каждым. Статический сайт, без
-сборки и сервера.
+> [Русская версия](README.ru.md)
 
-## Файлы
+A personal portfolio page: dark cyberpunk styling with a businesslike tone,
+project cards and a "get to know it" panel for each one. A static site, with no
+build step and no server.
 
-    index.html                единственная страница, точка входа
-    css/style.css             оформление: тёмная база, циановый акцент, сетка
-    css/fonts.css             подключение локальных шрифтов
-    js/main.js                данные проектов + карточки, фильтры, окно знакомства
-    fonts/                    Exo 2 (заголовки) и Inter (текст), латиница + кириллица
-    img/og.png                превью 1200×630 для соцсетей и мессенджеров
-    img/favicon.svg           иконка вкладки
-    img/apple-touch-icon.png  иконка для экрана «Домой» на iOS
-    img/journeyman-*.jpg      снимки Journeyman: холст пространства и объект
-    img/journeyman-desktop.png снимок настольной версии
-    img/brightside-*.jpg      снимки лендинга Brightside
-    img/roastery-*.jpg        снимки каталога Roastery
-    tools/og-template.html    шаблон, из которого снимается og.png
-    robots.txt                разрешение обхода + указатель на карту сайта
-    sitemap.xml               карта сайта для Google и Яндекса
+## Files
 
-`index.html`, `robots.txt` и `sitemap.xml` обязаны лежать в корне: первый —
-точка входа сайта, остальные два поисковики ищут только там.
+    index.html                the only page, the entry point
+    css/style.css             styling: dark base, cyan accent, grid
+    css/fonts.css             local font declarations
+    js/main.js                project data + cards, filters, project panel
+    fonts/                    Exo 2 (headings) and Inter (text), Latin + Cyrillic
+    img/og.png                1200×630 preview for social networks and messengers
+    img/favicon.svg           tab icon
+    img/apple-touch-icon.png  icon for the iOS home screen
+    img/journeyman-*.jpg      Journeyman screenshots: the space canvas and an object
+    img/journeyman-desktop.png screenshot of the desktop version
+    img/brightside-*.jpg      screenshots of the Brightside landing page
+    img/roastery-*.jpg        screenshots of the Roastery catalogue
+    tools/og-template.html    the template og.png is captured from
+    robots.txt                crawl permission + pointer to the sitemap
+    sitemap.xml               sitemap for Google and Yandex
 
-Шрифты лежат в репозитории: сайт не обращается к Google Fonts и не ломается
-без интернета. Заголовочный шрифт выбран с кириллицей — у многих «техно»
-шрифтов её нет, и русский текст падает на системный.
+`index.html`, `robots.txt` and `sitemap.xml` must sit in the root: the first is
+the site's entry point, and search engines look for the other two only there.
 
-## Адрес сайта
+The fonts live in the repository: the site never calls Google Fonts and does not
+break without an internet connection. The heading font was picked for its
+Cyrillic coverage — many "techno" fonts lack it, and Russian text then falls back
+to a system font.
 
-Адрес прописан в трёх файлах: `<link rel="canonical">` и `og:`-теги в
-`index.html` (в том числе `og:image` — путь `img/og.png`), `sitemap.xml`,
-`robots.txt`. Сейчас везде стоит
-`https://kennys44.github.io/MyScreen/`. При переезде на свой домен поменяйте
-эти строки — иначе превью в соцсетях будет тянуть картинку со старого адреса.
+## Site address
 
-## Как добавить проект
+The address is written in three files: `<link rel="canonical">` and the `og:`
+tags in `index.html` (including `og:image` — the path `img/og.png`),
+`sitemap.xml`, `robots.txt`. Right now they all point to
+`https://kennys44.github.io/MyScreen/`. When moving to your own domain, change
+these lines — otherwise social previews will keep pulling the image from the old
+address.
 
-Все проекты описаны одним массивом `PROJECTS` в начале `js/main.js`. Допишите
-объект — карточка, фильтр и окно соберутся сами:
+## How to add a project
+
+Every project is described in a single `PROJECTS` array at the top of
+`js/main.js`. Add an object — the card, the filter and the panel assemble
+themselves:
 
     {
-      id: 'slug',              // уникальный ключ
-      title: 'Название',
-      tagline: 'Одна строка сути',
-      status: 'live',          // live | wip | idea — цвет метки
-      statusText: 'Работает',
+      id: 'slug',              // unique key
+      title: 'Name',
+      tagline: 'One line of substance',
+      status: 'live',          // live | wip | idea — label colour
+      statusText: 'Live',
       year: '2026',
-      kind: 'Инструмент',      // попадает в фильтры
+      kind: 'Tool',            // feeds the filters
       tags: ['HTML/CSS/JS'],
-      summary: 'Абзац для карточки',
-      about: 'Абзац для окна знакомства',
-      features: ['Пункт списка «Что внутри»'],
-      stack: 'Чем сделано',
+      summary: 'Paragraph for the card',
+      about: 'Paragraph for the project panel',
+      features: ['Bullet for the "What is inside" list'],
+      stack: 'What it is built with',
       repo: 'https://github.com/KennyS44/...',
     }
 
-Число в блоке «Проектов» считается автоматически (слоты со `status: 'idea'`
-не учитываются).
+The number in the "Projects" stat is counted automatically (slots with
+`status: 'idea'` are left out).
 
-## Проверено
+## Verified
 
-Chrome (Playwright), 1280×900 и 390×844: карточки открываются, фильтры
-переключают список, окно закрывается по Esc, фону и крестику, горизонтальной
-прокрутки на телефоне нет, ошибок в консоли нет, ни одного запроса с кодом
-4xx/5xx, оба шрифта грузятся локально.
+Chrome (Playwright), 1280×900 and 390×844: cards open, filters switch the list,
+the panel closes on Esc, on the backdrop and on the cross, there is no horizontal
+scrolling on a phone, no console errors, not a single 4xx/5xx request, and both
+fonts load locally.
